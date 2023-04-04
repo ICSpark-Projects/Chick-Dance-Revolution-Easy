@@ -1,0 +1,7 @@
+This file contains all the assets needed for the project.
+
+The "farm.jpg" image was designed by brgfx / Freepik. Link: "http://www.freepik.com".
+
+The "chicken-sound.mp3" comes from Rudmer Rotteveel on Pixabay. Link: "https://pixabay.com/sound-effects/chicken-single-alarm-call-6056/".
+
+Everything else was made by me on PixilArt. Link: https://www.pixilart.com/.

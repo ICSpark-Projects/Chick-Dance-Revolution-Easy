@@ -1,0 +1,251 @@
+body {
+  /* Set the background image to the asset farm.jpg */
+  background-image: url("assets/farm.jpg");
+}
+
+#container {
+  /* Set the position to fixed. This will ensure no elements move out of place. */
+  position: fixed;
+}
+
+#chick {
+  /* Set height and width to 250px */
+  height: 250px;
+  width: 250px;
+}
+
+h1 {
+  /* Style title font how you want */
+  font-size: 80px;
+  color: red;
+  text-align: center;
+}
+
+#game {
+  /* Set the display to flex. This will help organize the main divs */
+  display: flex;
+}
+
+#dance-board {
+  /* Set border to 2px solid black */
+  border: 2px solid black;
+  /* Set height and width to 750px */
+  height: 750px;
+  width: 750px;
+  /* Set background color to reasonable color like gray */
+  background-color: gray;
+  /* Set the left margin to 300px. This helps position the dance board correctly. */
+  margin-left: 300px;
+}
+
+#music-board {
+  /* Set border to 2px solid black */
+  border: 2px solid black;
+  /* Set height to 750px and width to 700px */
+  height: 750px;
+  width: 700px;
+  /* Set background color to reasonable color like orange */
+  background-color: orange;
+  /* Set right margin to 300px */
+  margin-right: 300px;
+  /* Set display to flex */
+  display: flex;
+  /* Set justify content to center */
+  justify-content: center;
+}
+
+.dancearrow {
+  /* Set height and width to 240px */
+  height: 240px;
+  width: 240px;
+}
+
+#dancearrow-up {
+ /* Set transform to rotate(180deg) */
+  transform: rotate(180deg);
+}
+
+#dancearrow-upperright {
+  /* Set transform to rotate(225deg) */
+  transform: rotate(225deg);
+  /* Set opacity to 50% */
+  opacity: 50%;
+}
+
+#dancearrow-right {
+  /* Set transform to rotate(-90deg) */
+  transform: rotate(-90deg);
+}
+
+#dancearrow-lowerright {
+  /* Set transform to rotate(-45deg) */
+  transform: rotate(-45deg);
+  /* Set opacity to 50% */
+  opacity: 50%;
+}
+
+#dancearrow-lower {
+  /* Set transform to rotate(90deg) */
+  transform: rotate(90deg);
+}
+
+#dancearrow-upperleft {
+  /* Set transform to rotate(135deg) */
+    transform: rotate(135deg);
+  /* Set opacity to 50% */
+  opacity: 50%;
+
+}
+
+#dancearrow-left {
+  /* Set transform to rotate(90deg) */
+  transform: rotate(90deg);
+}
+
+#dancearrow-lowerleft {
+  /* Set transform to rotate(45deg) */
+  transform: rotate(45deg);
+  /* Set opacity to 50% */
+  opacity: 50%;
+}
+
+.toparrow, .movearrow {
+  /* Set height and width to 150px */
+  height: 150px;
+  width: 150px;
+}
+
+#toparrow-up, #movearrow-up {
+  /* Set transform to rotate(180deg) */
+  transform: rotate(180deg);
+}
+
+#toparrow-right, #movearrow-right {
+  /* Set transform to rotate(-90deg) */
+  transform: rotate(-90deg);
+}
+
+#toparrow-down, #movearrow-down {
+  /* Set transform to rotate(0deg) */
+  transform: rotate(0deg);
+}
+
+#toparrow-left, #movearrow-left {
+  /* Set transform to rotate(90deg) */
+  transform: rotate(90deg);
+}
+
+#top-notes {
+  /* Set display to flex */
+  display: flex;
+  /* Set self align to flex-start */
+  align-self: flex-start;
+}
+
+#move-notes {
+  /* Set opacity to 80% */
+  opacity: 80%;
+}
+
+#movearrow-up {
+  /* Set position to absolute */
+  position: absolute;
+  /* Set bottom to 500px */
+  bottom: 500px;
+  /* Set right to 800px */
+  right: 800px;
+}
+
+#movearrow-right {
+  /* Set position to absolute */
+  position: absolute;
+  /* Set bottom to 500px */
+  bottom: 500px;
+  /* Set right to 650px */
+  right: 650px;
+}
+
+#movearrow-down {
+  /* Set position to absolute */
+  position: absolute;
+  /* Set bottom to 500px */
+  bottom: 500px;
+  /* Set right to 500px */
+  right: 500px;
+}
+
+#movearrow-left {
+  /* Set position to absolute */
+  position: absolute;
+  /* Set bottom to 100px */
+  bottom: 500px;
+  /* Set right to 350px */
+  right: 350px;
+}
+
+@keyframes moveUp {
+  /* Have the keyframe go from bottom: 500px to bottom: 1100px */
+  from {bottom: 500px;}
+  to {bottom: 1100px;}
+}
+
+@keyframes moveLeft {
+  /* Have the keyframe go from bottom: 500px to bottom: 1100px */
+  from {bottom: 500px;}
+  to {bottom: 1100px;}
+}
+
+@keyframes moveDown {
+  /* Have the keyframe go from bottom: 500px to bottom: 1100px */
+  from {bottom: 500px;}
+  to {bottom: 1100px;}
+}
+
+@keyframes moveRight {
+  /* Have the keyframe go from bottom: 500px to bottom: 1100px */
+  from {bottom: 500px;}
+  to {bottom: 1100px;}
+}
+
+#play {
+  /* Set left and bottom margins to 300px */
+  margin-left: 300px;
+  margin-bottom: 300px;
+  /* Set the display to inline block */
+  display: inline-block;
+  /* Style the font size, background color, border radius, color, etc. */
+  font-size: 80px;
+  background-color: yellowgreen;
+  border-radius: 20px;
+  color: white;
+}
+
+#reset {
+  /* Set left margin to 10px */
+  margin-left: 10px;
+  /* Set bottom margin to 10px */
+  margin-bottom: 300px;
+  /* Set the display to inline block */
+  display: inline-block;
+  /* Style the font size, background color, border radius, color, etc. */
+  font-size: 80px;
+  background-color: red;
+  border-radius: 20px;
+  color: white;
+}
+
+#score {
+  /* Set left margin to 700px */
+  margin-left: 700px;
+  /* Set bottom margin to 300px */
+  margin-bottom: 300px;
+  /* Set the display to inline block */
+  display: inline-block;
+  /* Set height to 200px */
+  height: 200px;
+  /* Set width to 300px */
+  width: 300px;
+  /* Style the font size, background color, border radius, color, etc. */
+  font-size: 50px;
+  color: white;
+}
