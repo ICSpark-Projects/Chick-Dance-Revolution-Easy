@@ -1,4 +1,4 @@
-# chick-dance-revolution
+# chick-dance-revolution (easy)
 
 ## Description
 This project builds on skills in handling events and making javascript functions. Create a game where you are a dancing chick!
