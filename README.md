@@ -73,10 +73,29 @@ So we need to add an event listener.
 Look at the template code for section 2.1. The event listener is set up for you here.
 
 ```javascript
-// 2.1. Create an event listener on document (ex. document.addEventListener...) to detect the 'keydown' event.
+// Make sure you see this event listener in your code
 document.addEventListener('keydown', function(event) {
-  var key = event.key; // "ArrowRight", "ArrowLeft", "ArrowUp", or "ArrowDown"
+ ...
+});
+```
 
+In the code, you should see a variable called "key". The variable key will tell us exactly what key was pressed on the keyboard, and for the arrow keys, I've commented exactly what these values can be. Knowing what key was pressed will help us move the chick in different directions.
+
+```javascript
+var key = event.key; // "ArrowRight", "ArrowLeft", "ArrowUp", or "ArrowDown"
+```
+
+Look at the if/else if statements that have been set up to check whether the variable key is equal to "ArrowRight", "ArrowLeft", "ArrowUp", or "ArrowDown". Notice that the first if statement where key == "ArrowRight" has been done for you.
+
+Within the other "else if" statements, make the following changes:
+- Change the source of the chick to the corresponding direction
+  - Ex: chick.src = 'assets/chick-left.png';
+- Change the source of the appropriate dance board arrow and music board moving arrow to the orange arrow image.
+  - Ex: danceArrowUp.src = 'assets/orange-arrow.png';
+  - Ex: moveArrowUp.src = 'assets/orange-arrow.png';
+
+
+```javascript
   // We are going to have different if statements to handle what the value
   // of the key could be
   if (key == 'ArrowRight') {
@@ -107,19 +126,8 @@ document.addEventListener('keydown', function(event) {
      // ******ADD CODE HERE*******
     
   }
-});
 ```
 
-In the code, you should see a variable called "key". The variable key will tell us exactly what key was pressed on the keyboard, and for the arrow keys, I've commented exactly what these values can be. Knowing what key was pressed will help us move the chick in different directions.
-
-Look at the if/else if statements that have been set up to check whether the variable key is equal to "ArrowRight", "ArrowLeft", "ArrowUp", or "ArrowDown". Notice that the first if statement where key == "ArrowRight" has been done for you.
-
-Within the other "else if" statements, make the following changes:
-- Change the source of the chick to the corresponding direction
-  - Ex: chick.src = 'assets/chick-left.png';
-- Change the source of the appropriate dance board arrow and music board moving arrow to the orange arrow image.
-  - Ex: danceArrowUp.src = 'assets/orange-arrow.png';
-  - Ex: moveArrowUp.src = 'assets/orange-arrow.png';
 
 Now try moving the chick using the arrow keys. You should notice arrows changing from blue to orange and the chick changing
 direction. But do you see the issue? Once you stop pressing the keys, we should see the orange arrows go back to blue and the chick
@@ -130,15 +138,29 @@ reset to its default position, but this is not the case. As such, we need to add
 Look at the template code for section 2.2. The event listener is set up for you here.
 
 ```javascript
-// 2.2. Create an event listener to detect the 'keyup' event.
+// Make sure you see this event listener in your code
 document.addEventListener('keyup', function(event) {
-  var key = event.key; // "ArrowRight", "ArrowLeft", "ArrowUp", or "ArrowDown"
-  chick.src = 'assets/chick-base.png';
+ ...
+});
+```
 
-  // We will again be using if statements to handle each possible
-  // value that the key can be
+Once again, we have the variable named "key" and the if/else if statements corresponding to whether key equals "ArrowRight", "ArrowLeft", "ArrowUp", or "ArrowDown".
 
-  // key equals "ArrowRight" means the right arrow was released on the keyboard
+```javascript
+ var key = event.key; // "ArrowRight", "ArrowLeft", "ArrowUp", or "ArrowDown"
+```
+
+Outside your if/else statements at the beginning of the 'keyup' event listener function, we have reset the source of the chick to the chick base image.
+Why did we do this? The base image represents the chick when it is not moving in the up, down, left, or right direction. When the user releases the arrow key, we want to reset to this base image for the chick.
+
+```javascript
+chick.src = 'assets/chick-base.png';
+```
+
+Within your if/else if statements, reset the source of each appropriate arrow to the blue arrow image.
+
+```javascript
+// key equals "ArrowRight" means the right arrow was released on the keyboard
   if (key == 'ArrowRight') {
     // We must change the danceArrowRight and moveArrowRight src
     // to the blue arrows, to indicate that they are not being pressed anymore
@@ -146,23 +168,12 @@ document.addEventListener('keyup', function(event) {
     moveArrowRight.src = 'assets/blue-arrow.png';
   } else if (key == 'ArrowLeft') {
     // ********ADD CODE HERE********
-    // reset src of the danceArrowLeft and moveArrowLeft to the blue arrow image
   } else if (key == 'ArrowUp') {
     // ********ADD CODE HERE********
-    // reset src of the danceArrowUp and moveArrowUp to the blue arrow image
   } else if (key == 'ArrowDown') {
     // ********ADD CODE HERE********
-    // reset src of the danceArrowDown and moveArrowDown to the blue arrow image
   }
-});
-```
-
-Once again, we have the variable named "key" and the if/else if statements corresponding to whether key equals "ArrowRight", "ArrowLeft", "ArrowUp", or "ArrowDown".
-
-Outside your if/else statements at the beginning of the 'keyup' event listener function, we have reset the source of the chick to the chick base image.
-Why did we do this? The base image represents the chick when it is not moving in the up, down, left, or right direction. When the user releases the arrow key, we want to reset to this base image for the chick.
-
-Within your if/else if statements, reset the source of each appropriate arrow to the blue arrow image.
+  ```
 
 Now try moving the chick again. You should see the chick's movement and the arrows' colors reset appropriately.
 What comes next? Now that we can move our character, it is time to make the game functional.
@@ -174,9 +185,9 @@ What comes next? Now that we can move our character, it is time to make the game
 - Look at the template code for section 3.1. The playGame() function has been set up for you.
 
 ```javascript
-// Look for this function in your code. Ignore the stuff inside for now. Just make sure you see this function.
+// Look for this function in your code.
 function playGame() {
-
+ ...
 }
 ```
 
@@ -191,7 +202,7 @@ array of moves. To do this, let's first assign values to the moves array that we
 
 At the top of the script.js file below your "currentMove" variable statement, make a for loop that runs however many iterations you want the game to be. For instance, the for loop could run 30 times for 30 moves. Do NOT use the "currentMove" to iterate through the for loop!
 
-Here's an example setup for the for loop:
+Here's an example setup for the for loop. You can copy this code:
 ```javascript
 for (var x = 0; x < 30; x++) {
 
@@ -216,6 +227,13 @@ Look at your template code for section 3.3.
 ```javascript
   var intervalID = setInterval(function movingNotes() {
     clearInterval(intervalID);
+    ...
+  }, 1500);
+```
+
+- Right after the ```clearInterval(intervalID) statement```, create if/else if statements to check if moves[currentMove] == 0, moves[currentMove] == 1, moves[currentMove] == 2, or moves[currentMove] == 3. 
+
+```javascript
     // check moves, 0 = up, 1 = down, 2 = right, and 3 = left
     if (moves[currentMove] == 0) {
       moveArrowUp.style.animation = 'moveUp 1s linear 1';
@@ -229,9 +247,14 @@ Look at your template code for section 3.3.
       // **********ADD CODE HERE*********
       // Change the moveArrowLeft.style.animation
     }
+```
 
-    // ****increment currentMove (increase this variable by 1)****
+- Increment "currentMove" after these if/else if statements because we want to keep iterating through the moves array after making a move.
 
+Then, at the end we must check whether to continue or end the game based on the value of currentMove. This part has been completed for you.
+If currentMove < moves.length, we call the playGame() function. Else if currentMove == moves.length, we create a new audio using the "chicken-sound.mp3" in the assets folder and play the audio. Follow [here](https://stackoverflow.com/questions/9419263/how-to-play-audio) for reference. The audio signifies the end of the game.
+
+```javascript
     // check whether to continue or end game
     if (currentMove < moves.length) {
       playGame();
@@ -239,15 +262,7 @@ Look at your template code for section 3.3.
       var chickenSound = new Audio('assets/chicken-sound.mp3');
       chickenSound.play();
     }
-  }, 1500);
 ```
-
-- Right after the ```clearInterval(intervalID) statement```, create if/else if statements to check if moves[currentMove] == 0, moves[currentMove] == 1, moves[currentMove] == 2, or moves[currentMove] == 3. 
-
-- Increment "currentMove" after these if/else if statements because we want to keep iterating through the moves array after making a move.
-
-Then, at the end we must check whether to continue or end the game based on the value of currentMove. This part has been completed for you.
-If currentMove < moves.length, we call the playGame() function. Else if currentMove == moves.length, we create a new audio using the "chicken-sound.mp3" in the assets folder and play the audio. Follow [here](https://stackoverflow.com/questions/9419263/how-to-play-audio) for reference. The audio signifies the end of the game.
 
 #### 3.4. Implementing arrow up animation functionality
 
