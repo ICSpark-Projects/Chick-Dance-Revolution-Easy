@@ -24,7 +24,7 @@ For this project, save your work frequently, and to see your changes reflected i
 
 ## JavaScript
 
-For this project, the HTML and CSS files have been mostly completed for you, so you can focus on the JavaScript. If there is something you need to change in the HTML/CSS, the directions will explicitly tell you.
+For this project, the HTML and CSS files have been mostly completed for you, so you can focus on the JavaScript. In fact, there is only one line of the HTML you will need to change, so make sure to follow the instructions carefully.
 
 Head to your script.js file and follow along with the template code.
 
@@ -156,7 +156,7 @@ Outside your if/else statements at the beginning of the 'keyup' event listener f
 chick.src = 'assets/chick-base.png';
 ```
 
-Within your if/else if statements, reset the source of each appropriate arrow to the blue arrow image for when no arrow keys are being pressed.
+Within your if/else if statements, reset the source of each appropriate danceArrow and moveArrow to the blue arrow image for when no arrow keys are being pressed.
 
 ```javascript
 // key equals "ArrowRight" means the right arrow was released on the keyboard
@@ -224,7 +224,7 @@ what the current move is. To do so, we must use something called setInterval.
 
 #### 3.3. Creating set interval function
 
-Do you see where we use setInterval? setInterval is a method that enables us to call a function repeatedly after a set period of time, which will be useful for our game.
+Go back to your playGame() function near the end of the javascript template code. Do you see where we use setInterval? setInterval is a method that enables us to call a function repeatedly after a set period of time, which will be useful for our game.
 
 Look at your template code for section 3.3.
 ```javascript
@@ -234,20 +234,20 @@ Look at your template code for section 3.3.
   }, 1500);
 ```
 
-- Right after the ```clearInterval(intervalID) statement```, you should see if/else if statements to check if moves[currentMove] == 0, moves[currentMove] == 1, moves[currentMove] == 2, or moves[currentMove] == 3. In these if/else if statements, change the moveArrow.style.animation appropriately. The first one is done for you.
+- Right after the ```clearInterval(intervalID) statement```, you should see if/else if statements to check if moves[currentMove] == 0, moves[currentMove] == 1, moves[currentMove] == 2, or moves[currentMove] == 3. Do not do anything with the code inside yet because that is for step 3.4.
 
 ```javascript
     // check moves, 0 = up, 1 = down, 2 = right, and 3 = left
     if (moves[currentMove] == 0) {
       moveArrowUp.style.animation = 'moveUp 1s linear 1';
     } else if (moves[currentMove] == 1) {
-      // **********ADD CODE HERE*********
+      // **********STEP 3.4: ADD CODE HERE*********
       // Change the moveArrowDown.style.animation
     } else if (moves[currentMove] == 2) {
-      // **********ADD CODE HERE*********
+      // **********STEP 3.4: ADD CODE HERE*********
       // Change the moveArrowRight.style.animation
     } else if (moves[currentMove] == 3) {
-      // **********ADD CODE HERE*********
+      // **********STEP 3.4: ADD CODE HERE*********
       // Change the moveArrowLeft.style.animation
     }
 ```
@@ -277,13 +277,13 @@ Look for this code in your javascript, and change the style.animation for the ot
     if (moves[currentMove] == 0) {
       moveArrowUp.style.animation = 'moveUp 1s linear 1';
     } else if (moves[currentMove] == 1) {
-      // **********ADD CODE HERE*********
+      // **********STEP 3.4: ADD CODE HERE*********
       // Change the moveArrowDown.style.animation
     } else if (moves[currentMove] == 2) {
-      // **********ADD CODE HERE*********
+      // **********STEP 3.4: ADD CODE HERE*********
       // Change the moveArrowRight.style.animation
     } else if (moves[currentMove] == 3) {
-      // **********ADD CODE HERE*********
+      // **********STEP 3.4: ADD CODE HERE*********
       // Change the moveArrowLeft.style.animation
     }
 ```
@@ -295,7 +295,7 @@ Within each of the event listener functions, set the animation state for the app
 
 Note that the first event listener has been done for you. You can use it to make the others.
 ```javascript
-// Make sure you have four of these, one for each different arrow
+// Make sure you have four of these, one for each different moveArrow
 moveArrowUp.addEventListener('animationend', function() {
   moveArrowUp.style.animation = 'none';
 });
