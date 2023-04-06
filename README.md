@@ -75,7 +75,7 @@ Look at the template code for section 2.1. The event listener is set up for you 
 ```javascript
 // Make sure you see this event listener in your code
 document.addEventListener('keydown', function(event) {
- ...
+
 });
 ```
 
@@ -187,7 +187,7 @@ What comes next? Now that we can move our character, it is time to make the game
 ```javascript
 // Look for this function in your code.
 function playGame() {
- ...
+
 }
 ```
 
@@ -227,11 +227,11 @@ Look at your template code for section 3.3.
 ```javascript
   var intervalID = setInterval(function movingNotes() {
     clearInterval(intervalID);
-    ...
+    
   }, 1500);
 ```
 
-- Right after the ```clearInterval(intervalID) statement```, create if/else if statements to check if moves[currentMove] == 0, moves[currentMove] == 1, moves[currentMove] == 2, or moves[currentMove] == 3. 
+- Right after the ```clearInterval(intervalID) statement```, create if/else if statements to check if moves[currentMove] == 0, moves[currentMove] == 1, moves[currentMove] == 2, or moves[currentMove] == 3. In these if/else if statements, change the moveArrow.style.animation appropriately. The first one is done for you.
 
 ```javascript
     // check moves, 0 = up, 1 = down, 2 = right, and 3 = left
