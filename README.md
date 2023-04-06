@@ -194,6 +194,10 @@ function playGame() {
 This is another way to add an event listener besides just doing it in JavaScript. With this in place, if a user presses the
 button, the playGame() function will execute.
 
+```html
+    <button id="play" onclick=playGame()>Play</button>
+```
+
 #### 3.2. Creating moves
 
 Head back to script.js. Within the playGame() function, we are going to focus on making the music board arrows move in response to a premade
