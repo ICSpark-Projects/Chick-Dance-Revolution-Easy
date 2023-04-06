@@ -30,27 +30,36 @@ Head to your script.js file and follow along.
 
 ### 1. Set up variables, storing references for elements using the DOM method ```document.getElementById(elementId)```.
 
-#### Please make the following variables in your code. Make sure the ids you use match what is written here, and what is in the html.
+#### Please refer to step 1 in your javascript template code and add the variables that are missing, as indicated by the comments with "****".
+In particular, make sure you make the following variables:
+- danceArrowLeft, danceArrowRight, danceArrowDown to refer to the danceArrow HTML elements
+- moveArrowLeft, moveArrowRight, moveArrowDown to refer to the moveArrow HTML elements
+- an empty array called moves
+- an integer variable called currentMove with a value of 0
 
-- Create variable for element chick called "chick"
-- Create variables for elements with ids dancearrow-up, dancearrow-left, dancearrow-right, dancearrow-down called "danceArrowUp", "danceArrowLeft",
-"danceArrowRight", and "danceArrowDown"
 ```javascript
-// Here's code to get you started on making the danceArrow variables
+// These are most of the variables we are going to be using to refer to our html elements.
+// chick represents the chick character
+var chick = document.getElementById('chick');
+
+// the danceArrows represent the big arrows surrounding the chick
 var danceArrowUp = document.getElementById('dancearrow-up');
-```
-- Create variables for elements with ids movearrow-up, movearrow-left, movearrow-right, movearrow-down called "moveArrowUp", "moveArrowLeft",
-"moveArrowRight", and "moveArrowDown"
-```javascript
-// Here's code to get you started on making the moveArrow variables
+// ****Make the other danceArrow variables here****
+
+// the moveArrows represent the arrows that will move on the music board
 var moveArrowUp = document.getElementById('movearrow-up');
+// ****Make the other moveArrow variables here****
+
+// the scoreText represents the current score of the player
+var scoreText = document.getElementById('score-text');
+// the score represents how many points the player has scored.
+// at the start it should be 0
+var score = 0;
+
+// ****FOR STEP 1: Create an array called "moves". It should be empty****
+
+// ****FOR STEP 1: Create an integer variable called "currentMove". It should have value 0.****
 ```
-- Create variable for element with id score-text called "scoreText"
-- Create integer variable for keeping track of player's score called "score". It should be set to 0.
-- Create empty array variable called "moves" for holding game moves
-- Create integer variable called "currentMove" with the value 0 to keep track of the current move in the "moves" array.
-
-
 
 
 ### 2. Detecting player movement
@@ -63,10 +72,45 @@ So we need to add an event listener.
 
 Look at the template code for section 2.1. The event listener is set up for you here.
 
-In the code, you should see a variable called "key". The variable key will tell us exactly what key was pressed on the keyboard, and for the arrow keys, I've commented exactly what these values can be.
+```javascript
+// 2.1. Create an event listener on document (ex. document.addEventListener...) to detect the 'keydown' event.
+document.addEventListener('keydown', function(event) {
+  var key = event.key; // "ArrowRight", "ArrowLeft", "ArrowUp", or "ArrowDown"
 
-Knowing what key was pressed will help us determine what actions to take. The chick needs to be able to move in 4 directions,
-and the arrows need to change accordingly as well.
+  // We are going to have different if statements to handle what the value
+  // of the key could be
+  if (key == 'ArrowRight') {
+    // Change the src of the chick to the right direction
+    chick.src = 'assets/chick-right.png';
+    // Change the danceArrowRight.src and moveArrowRight.src to the orange arrow
+    danceArrowRight.src = 'assets/orange-arrow.png';
+    moveArrowRight.src = 'assets/orange-arrow.png';
+
+    // STEP 4: The variable "rect" will be the bounding box for the moveArrow that
+    // points to the right. 
+    var rect = moveArrowRight.getBoundingClientRect();
+    // Check a certain range that the arrow was hit
+    if (rect.top >= 100 && rect.top <= 300) {
+      // increment "score"
+      score++;
+      // change "scoreText" innerHTML to reflect updated score
+      scoreText.innerHTML = "Score: " + score;
+    }
+
+  } else if (key == 'ArrowLeft') {
+      // ******ADD CODE HERE*******
+      
+  } else if (key == 'ArrowUp') {
+     // ******ADD CODE HERE*******
+    
+  } else if (key == 'ArrowDown') {
+     // ******ADD CODE HERE*******
+    
+  }
+});
+```
+
+In the code, you should see a variable called "key". The variable key will tell us exactly what key was pressed on the keyboard, and for the arrow keys, I've commented exactly what these values can be. Knowing what key was pressed will help us move the chick in different directions.
 
 Look at the if/else if statements that have been set up to check whether the variable key is equal to "ArrowRight", "ArrowLeft", "ArrowUp", or "ArrowDown". Notice that the first if statement where key == "ArrowRight" has been done for you.
 
@@ -85,6 +129,34 @@ reset to its default position, but this is not the case. As such, we need to add
 
 Look at the template code for section 2.2. The event listener is set up for you here.
 
+```javascript
+// 2.2. Create an event listener to detect the 'keyup' event.
+document.addEventListener('keyup', function(event) {
+  var key = event.key; // "ArrowRight", "ArrowLeft", "ArrowUp", or "ArrowDown"
+  chick.src = 'assets/chick-base.png';
+
+  // We will again be using if statements to handle each possible
+  // value that the key can be
+
+  // key equals "ArrowRight" means the right arrow was released on the keyboard
+  if (key == 'ArrowRight') {
+    // We must change the danceArrowRight and moveArrowRight src
+    // to the blue arrows, to indicate that they are not being pressed anymore
+    danceArrowRight.src = 'assets/blue-arrow.png';
+    moveArrowRight.src = 'assets/blue-arrow.png';
+  } else if (key == 'ArrowLeft') {
+    // ********ADD CODE HERE********
+    // reset src of the danceArrowLeft and moveArrowLeft to the blue arrow image
+  } else if (key == 'ArrowUp') {
+    // ********ADD CODE HERE********
+    // reset src of the danceArrowUp and moveArrowUp to the blue arrow image
+  } else if (key == 'ArrowDown') {
+    // ********ADD CODE HERE********
+    // reset src of the danceArrowDown and moveArrowDown to the blue arrow image
+  }
+});
+```
+
 Once again, we have the variable named "key" and the if/else if statements corresponding to whether key equals "ArrowRight", "ArrowLeft", "ArrowUp", or "ArrowDown".
 
 Outside your if/else statements at the beginning of the 'keyup' event listener function, we have reset the source of the chick to the chick base image.
@@ -93,7 +165,6 @@ Why did we do this? The base image represents the chick when it is not moving in
 Within your if/else if statements, reset the source of each appropriate arrow to the blue arrow image.
 
 Now try moving the chick again. You should see the chick's movement and the arrows' colors reset appropriately.
-
 What comes next? Now that we can move our character, it is time to make the game functional.
 
 ### 3. Function to play game
@@ -144,16 +215,57 @@ Increment "currentMove" after these if/else if statements because we want to kee
 Then, at the end we must check whether to continue or end the game based on the value of currentMove. This part has been completed for you.
 If currentMove < moves.length, we call the playGame() function. Else if currentMove == moves.length, we create a new audio using the "chicken-sound.mp3" in the assets folder and play the audio. Follow [here](https://stackoverflow.com/questions/9419263/how-to-play-audio) for reference. The audio signifies the end of the game.
 
+```javascript
+function playGame() {
+  var intervalID = setInterval(function movingNotes() {
+    clearInterval(intervalID);
+    // check moves, 0 = up, 1 = down, 2 = right, and 3 = left
+    if (moves[currentMove] == 0) {
+      moveArrowUp.style.animation = 'moveUp 1s linear 1';
+    } else if (moves[currentMove] == 1) {
+      // **********ADD CODE HERE*********
+      // Change the moveArrowDown.style.animation
+    } else if (moves[currentMove] == 2) {
+      // **********ADD CODE HERE*********
+      // Change the moveArrowRight.style.animation
+    } else if (moves[currentMove] == 3) {
+      // **********ADD CODE HERE*********
+      // Change the moveArrowLeft.style.animation
+    }
+
+    // ****increment currentMove (increase this variable by 1)****
+
+    // check whether to continue or end game
+    if (currentMove < moves.length) {
+      playGame();
+    } else if (currentMove == moves.length) {
+      var chickenSound = new Audio('assets/chicken-sound.mp3');
+      chickenSound.play();
+    }
+  }, 1500);
+}
+```
+
 #### 3.4. Implementing arrow up animation functionality
 
 Notice how we haven't put anything within the if/else if statements to check each of the moves made. This is where we need to set the
-arrow elements to have an animation, so they will move up the music board. Add the following code within the first if statement that checks if moves[currentMove] == 0:
+arrow elements to have an animation, so they will move up the music board. 
 
+Look for this code in your javascript, and change the style.animation for the other moveArrows.
 ```javascript
-moveArrowUp.style.animation = 'moveUp 1s linear 1';
+    if (moves[currentMove] == 0) {
+      moveArrowUp.style.animation = 'moveUp 1s linear 1';
+    } else if (moves[currentMove] == 1) {
+      // **********ADD CODE HERE*********
+      // Change the moveArrowDown.style.animation
+    } else if (moves[currentMove] == 2) {
+      // **********ADD CODE HERE*********
+      // Change the moveArrowRight.style.animation
+    } else if (moves[currentMove] == 3) {
+      // **********ADD CODE HERE*********
+      // Change the moveArrowLeft.style.animation
+    }
 ```
-
-Copy this code into the other else if statements and adjust it appropriately.
 
 Now try playing the game. Things should be coming together! One issue you may notice is the arrow moving up animation stops immediately.
 
