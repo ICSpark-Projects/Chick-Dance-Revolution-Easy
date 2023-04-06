@@ -171,13 +171,20 @@ What comes next? Now that we can move our character, it is time to make the game
 
 #### 3.1. Creating a function called "playGame()" to run the Chick Dance Revolution game.
 
-Look at the template code for section 3.1. The playGame() function has been set up for you.
+- Look at the template code for section 3.1. The playGame() function has been set up for you.
 
-Then, go back to your index.html and look for the play button. In this button's start tags, add the attribute ```onclick=playGame()```.
+```javascript
+// Look for this function in your code. Ignore the stuff inside for now. Just make sure you see this function.
+function playGame() {
+
+}
+```
+
+- Then, go back to your index.html and look for the play button. In this button's start tags, add the attribute ```onclick=playGame()```.
 This is another way to add an event listener besides just doing it in JavaScript. With this in place, if a user presses the
 button, the playGame() function will execute.
 
-Head back to script.js. Within the playGame() function, we are going to focus on making the music board arrows move in response to a premade
+- Head back to script.js. Within the playGame() function, we are going to focus on making the music board arrows move in response to a premade
 array of moves. To do this, let's first assign values to the moves array that we created at the top of the file.
 
 #### 3.2. Creating moves
@@ -193,30 +200,20 @@ for (var x = 0; x < 30; x++) {
 
 Within this for loop, add the following code:
 ```javascript
+// This will push a random value from 0 to 3 (inclusive) onto the moves array. We are considering 0 = up, 1 = down, 2 = right, and 3 = left.
+// So for instance, if the value 0 was pushed onto the moves array, that indicates we added an up arrow move to our array.
 moves.push(Math.floor(Math.random() * 4));
 ```
-
-This will push a random value from 0 to 3 (inclusive) onto the moves array. We are considering 0 = up, 1 = down, 2 = right, and 3 = left.
-So for instance, if the value 0 was pushed onto the moves array, that indicates we added an up arrow move to our array.
 
 Now that we have the moves array all set, now we can implement the functionality of the arrows on the music board moving up according to
 what the current move is. To do so, we must use something called setInterval.
 
 #### 3.3. Creating set interval function
 
-Look at your template code for section 3.3.
-
 Do you see where we use setInterval? setInterval is a method that enables us to call a function repeatedly after a set period of time, which will be useful for our game.
 
-Right after the clearInterval(intervalID) statement, create if/else if statements to check if moves[currentMove] == 0, moves[currentMove] == 1, moves[currentMove] == 2, or moves[currentMove] == 3. 
-
-Increment "currentMove" after these if/else if statements because we want to keep iterating through the moves array after making a move.
-
-Then, at the end we must check whether to continue or end the game based on the value of currentMove. This part has been completed for you.
-If currentMove < moves.length, we call the playGame() function. Else if currentMove == moves.length, we create a new audio using the "chicken-sound.mp3" in the assets folder and play the audio. Follow [here](https://stackoverflow.com/questions/9419263/how-to-play-audio) for reference. The audio signifies the end of the game.
-
+Look at your template code for section 3.3.
 ```javascript
-function playGame() {
   var intervalID = setInterval(function movingNotes() {
     clearInterval(intervalID);
     // check moves, 0 = up, 1 = down, 2 = right, and 3 = left
@@ -243,8 +240,14 @@ function playGame() {
       chickenSound.play();
     }
   }, 1500);
-}
 ```
+
+- Right after the ```clearInterval(intervalID) statement```, create if/else if statements to check if moves[currentMove] == 0, moves[currentMove] == 1, moves[currentMove] == 2, or moves[currentMove] == 3. 
+
+- Increment "currentMove" after these if/else if statements because we want to keep iterating through the moves array after making a move.
+
+Then, at the end we must check whether to continue or end the game based on the value of currentMove. This part has been completed for you.
+If currentMove < moves.length, we call the playGame() function. Else if currentMove == moves.length, we create a new audio using the "chicken-sound.mp3" in the assets folder and play the audio. Follow [here](https://stackoverflow.com/questions/9419263/how-to-play-audio) for reference. The audio signifies the end of the game.
 
 #### 3.4. Implementing arrow up animation functionality
 
@@ -299,7 +302,7 @@ To do so, go back to your 'keydown' event listener code. Here, within the if sta
     }
 ```
 
-Paste the same code into each of your "else if" statements and adjust it appropriately for each different possible arrow pressed.
+- Paste the same code into each of your "else if" statements and adjust it appropriately for each different possible arrow pressed.
 
 You should see the score increase when you correctly hit the arrow.
 
